@@ -1,0 +1,35 @@
+<div>
+  <mat-form-field>
+    <mat-label>
+      Name
+    </mat-label>
+    <input
+      matInput
+      placeholder="Name"
+      [(ngModel)]="toDoName"
+      required
+      #name="ngModel"
+    />
+    <mat-error *ngIf="name.hasError('required')">
+      Bitte geben Sie einen Namen ein.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>
+      Priorität
+    </mat-label>
+    <input
+      matInput
+      placeholder="Priorität"
+      [(ngModel)]="todoPriority"
+      required
+      #priority="ngModel"
+    />
+    <mat-error *ngIf="priority.hasError('required')">
+      Bitte geben Sie eine Priorität an.
+    </mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="createTodo()">
+    Erstellen
+  </button>
+</div>

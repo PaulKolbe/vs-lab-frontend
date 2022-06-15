@@ -1,0 +1,44 @@
+<div class="container">
+  <div *ngIf="!mode">
+    <div class="name">
+      {{todoItem.todo}}
+    </div>
+    <div class="priority">
+      Priorität: {{todoItem.priority}}
+    </div>
+  </div>
+
+
+  <div *ngIf="mode">
+    <div class="name">
+      {{todoItem.todo}}
+    </div>
+    <mat-form-field>
+      <mat-label>
+        Priorität
+      </mat-label>
+      <input
+        matInput
+        placeholder="Priorität"
+        [(ngModel)]="newTodo.priority"
+        required
+        #priority="ngModel"
+      />
+      <mat-error *ngIf="priority.hasError('required')">
+        Bitte geben Sie eine Priorität an.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-raised-button color="primary" (click)="deleteTodo()">
+      Löschen
+    </button>
+    <button *ngIf="!mode" mat-raised-button color="primary" (click)="changeMode()">
+      Bearbeiten
+    </button>
+    <button *ngIf="mode" mat-raised-button color="primary" (click)="updateTodo()">
+      Speichern
+    </button>
+  </div>
+</div>
