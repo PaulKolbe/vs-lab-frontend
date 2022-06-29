@@ -22,12 +22,12 @@ export class TodoService {
     return this.http.get<Todo>(this.url + name);
   }
 
-  createTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(this.url, todo);
+  createTodo(todo: Todo): Promise<Todo> {
+    return firstValueFrom(this.http.post<Todo>(this.url, todo));
   }
 
-  deleteTodo(name: string): Observable<Todo> {
-    return this.http.delete<Todo>(this.url + name)
+  deleteTodo(name: string): Promise<Todo> {
+    return firstValueFrom(this.http.delete<Todo>(this.url + name));
   }
 
   updateTodo(todo: Todo): Observable<Todo> {

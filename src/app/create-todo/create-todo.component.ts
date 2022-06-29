@@ -17,11 +17,15 @@ export class CreateTodoComponent {
   ) { }
 
   async createTodo() {
+    console.log("Henning ist kein hs")
+
     if (this.toDoName === "" || this.todoPriority === 0) {
+      console.log("Henning ist ein hs")
+
       return;
     }
 
-    await this.todoService.createTodo({
+    this.todoService.createTodo({
       todo: this.toDoName,
       priority: this.todoPriority
     });
